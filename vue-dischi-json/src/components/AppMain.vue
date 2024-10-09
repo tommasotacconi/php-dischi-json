@@ -1,21 +1,25 @@
 <script>
+import Card from './Card.vue'
+import { store } from '../data/store';
+
 export default {
   data() {
     return {
-      
+      store,
     }
-  }
+  },
+  components: {
+    Card,
+  },
 }
 </script>
 
 <template>
-<main class="mt-3 p-1 bg-"> 
-  <div class="container-md">
-    <div class="card" style="width: 18rem;">
-      <img src="../assets/img/cd-placeholder.jfif" class="card-img-top" alt="disc image">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<main class="mt-3 p-1"> 
+  <div class="container-md px-4">
+    <div class="row row-cols-3 m-auto gx-5 gy-5" id="main-row">
+      <div class="col" :class="{}" v-for="(disc, index) in store.discsList" :kye="index">
+        <Card :disc="disc"/>
       </div>
     </div>
   </div>
@@ -23,4 +27,7 @@ export default {
 </template>
 
 <style scoped>
+#main-row {
+  max-width: 1000px;
+}
 </style>

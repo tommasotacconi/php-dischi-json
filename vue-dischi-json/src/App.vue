@@ -2,11 +2,12 @@
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import axios from 'axios';
+import { store } from './data/store.js';
 
 export default {
   data() {
     return {
-      discsList: [],
+      store,
     }
   },
   methods: {
@@ -15,7 +16,7 @@ export default {
         .then(response => {
           // handle success
           console.log(response);
-          this.discsList = response;
+          this.store.discsList = response.data;
         })
         .catch(error => {
           if (error.response) {
